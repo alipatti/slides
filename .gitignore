@@ -13,6 +13,7 @@
 *.nav
 *.snm
 *.vrb
+*.pdf
 
 # Mac system files
 .DS_Store

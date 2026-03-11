@@ -1,4 +1,4 @@
-\documentclass{ali-presentation}
+\documentclass[memey]{ali-presentation}
 
 \usepackage{fontspec}
 \usepackage{amsthm}
@@ -13,7 +13,7 @@
 \title{Overconfidence in Political Behavior}
 \subtitle{Pietro Ortoleva and Erik Snowberg}
 
-\date{July 28, 2025}
+\date{March 11, 2026}
 \author{Alistair Pattison}
 
 \begin{document}
@@ -23,25 +23,19 @@
 \section{Intro}
 
 \begin{frame}
-    \frametitle{Motivation}
+  \frametitle{This paper...}
+  
+  \begin{itemize}
+    \item Studies the role of overconfidence in shaping ideology and political behavior.
+    \item Develops a theoretical model linking overconfidence to:
+      \begin{itemize}
+        \item Ideological extremeness
+        \item Higher voter turnout
+        \item Stronger partisan identification
+      \end{itemize}
+    \item Generates and tests model predictions.
+  \end{itemize}
 
-    % TODO: motivate 
-    % idological spread exists
-    % some of this may caused by imperfect processing of information
-    % citizent neglect correlation and update \emph{too much}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Basic Model}
-
-    % TODO: overview model (no math)
-    % bayesian updating fails to explain
-\end{frame}
-
-\begin{frame}
-    \frametitle{Findings}
-
-    % TODO: highlight findings 
 \end{frame}
 
 \begin{frame}
@@ -67,20 +61,24 @@
 \begin{frame}
   \frametitle{Overconfidence Measure}
 
-  % TODO: explain measure
-  % ask someone a question that has a correct answer (e.g. mass of the earth),
-  % then ask how confident they are in their answer.
-  % this contains both waranted confidence (a.k.a. knowledge) and unwaranted over-confidence.
-  % to isolate overconfidence, the authors define
-  % overconfidence := confidence - E[confidence | accuracy]
-  % do this four times via a survey of $n = 3,000$, then take first principal component (to reduce meas. error)
-  % use econ-specific questions (e.g. unemployment)
+  \begin{itemize}
+    \item Ask respondents questions with correct answers (e.g. current unemp. rate).
+    \item Record accuracy and self-reported confidence in each answer.
+    \item Define overconfidence as:
+    $$
+      \text{overconfidence} := \text{confidence} - \mathbb{E}[\text{confidence} \mid \text{accuracy}].
+    $$
+    \item Repeat for four questions in a survey with $n = 3{,}000$ respondents.
+    \item Construct the first principal component to reduce measurement error.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Overconfidence Measure}
 
-  % TODO: insert screenshot of table 1 from paper
+  \begin{center}
+    \includegraphics[height=2.5in]{figures/tbl-1.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -101,24 +99,71 @@
 
 \begin{frame}
   \frametitle{Basic Model}
+  
+  Each citizen $i$ has utility defined over actions $a_i$, some ``preference bias'' $b_i$, and some global state $x$:
+  $$
+    b_i \sim \mathcal N(0, \tau_b) \hspace{1in}
+    x \sim \mathcal N(0, \tau)
+  $$
+  $$
+    U(a_i, b_i \ | \ x) = - (a_i - b_i - x)^2.
+  $$
+  
+  Define ideology to be the policy prefered by $i$
+  $$
+    \mathcal I_i = b_i + E_i[x]
+  $$
+  and extremeness
+  $$
+  \mathcal E_i = | \mathcal I_i |.
+  $$
 
-  % TODO: explain section I:
-  % each citizen $i$ has utility
+  % TODO: example?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Overconfidence}
+
+  Everyone starts with the correct prior about $x \sim \mathcal N(0, \tau)$.
+  Over time, people accumulate a vector of signals about $x$:
+  $$
+    (e_1, \ldots, e_n) \sim \mathcal N(x, \, \Sigma).
+  $$
+  People \emph{think} their experiences follow $\mathcal N(x, \, \Sigma')$ where $0 < \rho_i < \rho < 1$:
+
+  $$
+    \Sigma = \begin{pmatrix}
+    1 & \rho & \cdots & \rho \\
+    \rho & 1 & \cdots & \rho \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \rho & \rho & \cdots & 1
+    \end{pmatrix}
+    \hspace{1in}
+    \Sigma' = \begin{pmatrix}
+    1 & \rho_i & \cdots & \rho_i \\
+    \rho_i & 1 & \cdots & \rho_i \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \rho_i & \rho_i & \cdots & 1
+    \end{pmatrix}.
+  $$
 \end{frame}
 
 \begin{frame}
   \frametitle{Similar to, but NOT Bayesian}
 
-  % in bayesian model, posterior should converge to the truth
-  % given sufficient updates
+  In a Bayesian updating model, as $n \to \infty$, we should see
+  \begin{itemize}
+    \item overconfidence vanish
+    \item all people converge to the same distribution (ideological spread vanish)
+  \end{itemize}
 
-  % this should cause
-  % - overconfidence -> 0
-  % - population spread -> 0
-  
-  % in contrast, this papers model implies
-  % - overconfidence -> \infty
-  % - given sufficiently large $\rho$, spread -> \infty
+  \pause
+
+  In this model (Bayesian updating with incorrect liklihood), we should see
+  \begin{itemize}
+    \item overconfidence explode,
+    \item spread explode (given sufficiently large experience correlation $\rho$)
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -136,12 +181,12 @@
 \begin{frame}
   \frametitle{In the Data}
 
-  % TODO: figure 1
+  \begin{center}
+    \includegraphics[width=3in]{figures/fig-1.png}
+  \end{center}
 \end{frame}
 
 \section{Results}
-
-\subsection{Overconfidence}
 
 \begin{frame}
   \frametitle{Overconfidence and Extremeness are Correlated}
@@ -152,30 +197,56 @@
     This is true conditional on $n$, and independent of $n$ if $\rho$ is large enough
   \end{proposition}
 
-  % TODO: figure 2
+  \begin{center}
+    \includegraphics[height=2in]{figures/fig-2.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{In the Data}
 
-  Measure extremeness as absolute value of ideology after residualizing:
   $$
-    |\mathcal I_i - E[\mathcal I_i \ | \ \text{socioeconomic controls}]|
+    \text{Extremeness} := |\mathcal I_i - E[\mathcal I_i \ | \ \text{socioeconomic controls}]|
   $$
 
-  % TODO: table 3
+  \begin{center}
+    \includegraphics[height=2in]{figures/tbl-3.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Effect Sizes in Context}
-
-  % TODO: table 4
+  
+  \begin{center}
+    \includegraphics[height=2.5in]{figures/tbl-4.png}
+  \end{center}
 \end{frame}
-
-\subsection{Ideology}
 
 \begin{frame}
   \frametitle{Voter Turnout}
+
+  More overconfident citizens are more likely to turn out, even conditional on ideological extremeness.
+
+  \begin{center}
+    \includegraphics[width=5in]{figures/fig-4.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Voter Turnout}
+
+  \begin{center}
+    \includegraphics[width=5in]{figures/tbl-7.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Other Things}
+
+  \begin{itemize}
+    \item Endoginizing media consumption ($n$) strengthens results.
+    \item Sharing information
+  \end{itemize}
 \end{frame}
 
 \end{document}

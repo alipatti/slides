@@ -1,0 +1,181 @@
+\documentclass{ali-presentation}
+
+\usepackage{fontspec}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=.,
+  urlcolor=magenta,
+}
+
+\title{Overconfidence in Political Behavior}
+\subtitle{Pietro Ortoleva and Erik Snowberg}
+
+\date{July 28, 2025}
+\author{Alistair Pattison}
+
+\begin{document}
+
+\maketitle
+
+\section{Intro}
+
+\begin{frame}
+    \frametitle{Motivation}
+
+    % TODO: motivate 
+    % idological spread exists
+    % some of this may caused by imperfect processing of information
+    % citizent neglect correlation and update \emph{too much}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic Model}
+
+    % TODO: overview model (no math)
+    % bayesian updating fails to explain
+\end{frame}
+
+\begin{frame}
+    \frametitle{Findings}
+
+    % TODO: highlight findings 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Intuition}
+  \begin{quote}
+    ``For example, consider a
+    citizen who notes the number of people in her neighborhood who are unemployed,
+    and uses this information to deduce the state of the national economy. Suppose
+    further that she lives in a neighborhood with high unemployment. If the citizen
+    believes that the employment status of each person is relatively uncorrelated, she
+    will think she has a lot of information about the state of the national economy
+    (that is, she will be overconfident) and favor generous aid to the unemployed and
+    loose monetary policy. If, instead, she realizes that local unemployment has a
+    common cause—say, a factory shutting down—then she will understand that she
+    has comparatively little information about the national economic situation, and
+    believe that although the situation is bad, it is not likely to be dire, and will support
+    more moderate policies.''
+  \end{quote}
+\end{frame}
+
+\section{Data}
+
+\begin{frame}
+  \frametitle{Overconfidence Measure}
+
+  % TODO: explain measure
+  % ask someone a question that has a correct answer (e.g. mass of the earth),
+  % then ask how confident they are in their answer.
+  % this contains both waranted confidence (a.k.a. knowledge) and unwaranted over-confidence.
+  % to isolate overconfidence, the authors define
+  % overconfidence := confidence - E[confidence | accuracy]
+  % do this four times via a survey of $n = 3,000$, then take first principal component (to reduce meas. error)
+  % use econ-specific questions (e.g. unemployment)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Overconfidence Measure}
+
+  % TODO: insert screenshot of table 1 from paper
+\end{frame}
+
+\begin{frame}
+  \frametitle{Other Data}
+
+  \textit{Ideology}: (1) self-reported and (2) computed from 18 issue questions.
+
+  \textit{Voter Turnout}: voting rolls.
+
+  \textit{Partisan Identification}: self-report (strong/moderate/lean + Dem/Rep).
+
+  \textit{Controls}: income, education, stock/home ownership, in union, state.
+
+  \textit{Number of Signals}: media exposure, age.
+\end{frame}
+
+\section{Theoretical Framework}
+
+\begin{frame}
+  \frametitle{Basic Model}
+
+  % TODO: explain section I:
+  % each citizen $i$ has utility
+\end{frame}
+
+\begin{frame}
+  \frametitle{Similar to, but NOT Bayesian}
+
+  % in bayesian model, posterior should converge to the truth
+  % given sufficient updates
+
+  % this should cause
+  % - overconfidence -> 0
+  % - population spread -> 0
+  
+  % in contrast, this papers model implies
+  % - overconfidence -> \infty
+  % - given sufficiently large $\rho$, spread -> \infty
+\end{frame}
+
+\begin{frame}
+  \frametitle{Intuition}
+
+  Consider $\rho = 1$ and $\rho_i = 0$ (experiences are perfectly correlated, but people think they're independent). Then $n \to \infty$
+  \begin{itemize}
+    \item
+      increases confidence without increasing information (so overconfidence increases),
+    \item
+      pushes people towards their biased perceptions (so spread increases).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{In the Data}
+
+  % TODO: figure 1
+\end{frame}
+
+\section{Results}
+
+\subsection{Overconfidence}
+
+\begin{frame}
+  \frametitle{Overconfidence and Extremeness are Correlated}
+  
+  % TODO: fix this
+  \begin{proposition}
+    Overconfidence and ideological extremeness are positively correlated.
+    This is true conditional on $n$, and independent of $n$ if $\rho$ is large enough
+  \end{proposition}
+
+  % TODO: figure 2
+\end{frame}
+
+\begin{frame}
+  \frametitle{In the Data}
+
+  Measure extremeness as absolute value of ideology after residualizing:
+  $$
+    |\mathcal I_i - E[\mathcal I_i \ | \ \text{socioeconomic controls}]|
+  $$
+
+  % TODO: table 3
+\end{frame}
+
+\begin{frame}
+  \frametitle{Effect Sizes in Context}
+
+  % TODO: table 4
+\end{frame}
+
+\subsection{Ideology}
+
+\begin{frame}
+  \frametitle{Voter Turnout}
+\end{frame}
+
+\end{document}
